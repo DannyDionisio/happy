@@ -43,7 +43,7 @@
 
 .content-wrapper .location {
 	position: absolute;
-	right: 0;
+	left: 300px;
 	top: 0;
 
 	font-size: 24px;
@@ -51,12 +51,39 @@
 
 	display: flex;
 	flex-direction: column;
-
-	text-align: right;
 }
 
 .content-wrapper .location strong {
 	font-weight: 800;
+}
+
+.content-wrapper .restricted-access-button {
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	width: 222px;
+	height: 56px;
+	border-radius: 20px;
+	background-color: #12d4e0;
+	transition: background-color 0.2s;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	text-decoration: none;
+}
+
+.content-wrapper .restricted-access-button:hover {
+	background-color: #96feff;
+}
+
+.content-wrapper .restricted-access-button strong {
+	color: #fff;
+}
+.content-wrapper .restricted-access-button strong:hover {
+	color: #15c3d6;
 }
 
 .content-wrapper .enter-app {
