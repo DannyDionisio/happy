@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import { getRepository } from 'typeorm'
+import * as jwt from 'jsonwebtoken'
 import * as bcrypt from 'bcrypt'
 
 import User from '../models/User'
@@ -30,7 +31,19 @@ export default {
 		const user = await usersRepository.findOneOrFail({ email })
 
 		if (bcrypt.compareSync(password, user.password)) {
-			return res.status(200).json(user)
+			return res.status(200).json({
+				token: jwt.sign(
+					{
+						email: user.email,
+						id: user.id,
+						name: user.name,
+					},
+					String(process.env.JWT_TOKEN),
+					{
+						expiresIn: 86400,
+					}
+				),
+			})
 		}
 
 		return res.status(401).json({})
