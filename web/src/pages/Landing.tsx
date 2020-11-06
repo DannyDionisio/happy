@@ -22,7 +22,7 @@ function Landing() {
 					<span>Lisboa</span>
 				</div>
 
-				<Link to='/login' className='restricted-access-button'>
+				<Link to='/signin' className='restricted-access-button'>
 					<strong>Acesso restrito</strong>
 				</Link>
 

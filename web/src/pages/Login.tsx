@@ -2,11 +2,11 @@ import React, { useState, FormEvent } from 'react'
 
 import '../assets/styles/pages/login.css'
 
-import LogoImg from '../assets/images/map-marker.svg'
-import LogoTitle from '../assets/images/logo-title.svg'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import api from '../services/api'
+
+import MainHeader from '../components/MainHeader'
 
 interface User {
 	email: string
@@ -24,23 +24,16 @@ function Login() {
 	async function handleSubmit(event: FormEvent) {
 		event.preventDefault()
 
-		await api.post('signin', { email, password })
+		const { data } = await api.post('signin', { email, password })
+
+		localStorage.setItem('token', data.token)
 
 		history.push('/dashboard')
 	}
 
 	return (
 		<div id='page-login'>
-			<aside>
-				<header>
-					<img src={LogoImg} alt='Logo' />
-					<img src={LogoTitle} alt='Logo Title' />
-				</header>
-				<footer>
-					<strong>Amadora</strong>
-					<span>Lisboa</span>
-				</footer>
-			</aside>
+			<MainHeader />
 			<Link to='/' className='go-back'>
 				<FiArrowLeft size={32} color='#15C3D6' />
 			</Link>
@@ -81,16 +74,12 @@ function Login() {
 							<label htmlFor='remember-me'>Lembrar-me</label>
 						</div>
 
-						<Link to='' className='forgot-password'>
+						<Link to='/reset-password' className='forgot-password'>
 							Esqueci minha senha
 						</Link>
 					</div>
 
-					<button
-						type='submit'
-						className='login-button'
-						onClick={() => {}}
-					>
+					<button type='submit' className='login-button'>
 						Entrar
 					</button>
 				</form>
