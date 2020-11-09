@@ -7,7 +7,7 @@ import Orphanage from './pages/Orphanage'
 import CreateOrphanage from './pages/CreateOrphanage'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
-import ResetPassword from './pages/ResetPassword'
+import ForgotPassword from './pages/ForgotPassword'
 
 function Routes() {
 	return (
@@ -19,7 +19,7 @@ function Routes() {
 				<Route path='/orphanages/:id' component={Orphanage} />
 				<Route path='/signin' component={Login} />
 				<Route path='/dashboard' component={Dashboard} />
-				<Route path='/reset-password' component={ResetPassword} />
+				<Route path='/forgot-password' component={ForgotPassword} />
 			</Switch>
 		</BrowserRouter>
 	)
