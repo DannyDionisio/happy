@@ -1,32 +1,24 @@
 import React, { FormEvent, useState } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
-import { Link, useHistory } from 'react-router-dom'
-import api from '../services/api'
+import { Link } from 'react-router-dom'
 
-import '../assets/styles/pages/reset-password.css'
+import '../assets/styles/pages/forgot-password.css'
 
 import MainHeader from '../components/MainHeader'
 
-interface EmailMessage {
-	showEmail: boolean
-}
 
-export default function ForgotPassword<EmailMessage>() {
-	const [email, setEmail] = useState('')
-
-	const history = useHistory()
+export default function ForgotPassword() {
+	const [email, setEmail] = useState("")
+	const [errorMessage, setErrorMessage] = useState("")
 
 	async function handleSubmit(event: FormEvent) {
 		event.preventDefault()
 
-		if (email === '') {
-			setEmail({ showEmail: false, messageFromServer: '' })
+		if (!email) {
+			setErrorMessage("Email não pode ser vazio");
+			return;
 		}
-		const { data } = await api.post('forgot-password', { email })
 
-		localStorage.setItem('token', data.token)
-
-		history.push('/')
 	}
 
 	return (
@@ -51,31 +43,22 @@ export default function ForgotPassword<EmailMessage>() {
 						<input
 							type='email'
 							value={email}
+							required
 							onChange={(event) => {
 								setEmail(event.target.value)
 							}}
 						/>
 					</div>
+				{errorMessage && (
+					<div>
+						<p>{errorMessage}</p>
+					</div>
+				)}
 
 					<button type='submit' className='send-button'>
 						Enviar
 					</button>
 				</form>
-				{showNullError && (
-					<div>
-						<p>O email não pode ser nulo.</p>
-					</div>
-				)}
-				{showError && (
-					<div>
-						<p>Email não cadastrado. Por favor tente novamente.</p>
-					</div>
-				)}
-				{messageFromServer && (
-					<div>
-						<p>Email para redefinir senha enviado com sucesso!</p>
-					</div>
-				)}
 			</main>
 		</div>
 	)

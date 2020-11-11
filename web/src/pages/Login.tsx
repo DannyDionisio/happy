@@ -74,7 +74,7 @@ function Login() {
 							<label htmlFor='remember-me'>Lembrar-me</label>
 						</div>
 
-						<Link to='/reset-password' className='forgot-password'>
+						<Link to='/forgot-password' className='forgot-password'>
 							Esqueci minha senha
 						</Link>
 					</div>
