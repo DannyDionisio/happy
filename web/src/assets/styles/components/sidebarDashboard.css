@@ -1,0 +1,49 @@
+#sidebar-dashboard {
+  width: 96px;
+  padding: 32px 24px;
+  background: #15c3d6;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+#sidebar-dashboard img {
+  width: 48px;
+  height: 56px;
+}
+
+.mapPin-button,
+.alert-button,
+.power-button {
+  height: 48px;
+  width: 48px;
+
+  border-radius: 16px;
+  border: none;
+  margin: 16px 0;
+
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapPin-button {
+  background: #ffd666;
+}
+
+.alert-button,
+.power-button {
+  background: #12afcb;
+}
+
+.mapPin-button:hover {
+  background: #12afcb;
+}
+
+.alert-button:hover,
+.power-button:hover {
+  background: #ffd666;
+}

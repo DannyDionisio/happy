@@ -1,0 +1,33 @@
+#dashboard-page {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+}
+
+#dashboard-page main {
+  padding: 64px 102px;
+}
+
+#dashboard-page main legend {
+  font-size: 32px;
+  color: #4d6f80;
+}
+
+#dashboard-page header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#dashboard-page main span {
+  color: #8fa7b2;
+  font-size: 16px;
+}
+
+.line {
+  width: 100vw;
+  border: 1px solid #d3e2e5;
+}
